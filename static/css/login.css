@@ -15,16 +15,18 @@ body {
     align-items: center;
 
     font-family: Arial, sans-serif;
+
+    padding: 20px;
 }
 
 .container {
     width: 100%;
     max-width: 450px;
-
-    padding: 20px;
 }
 
 #loginForm {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
 
@@ -59,6 +61,8 @@ body {
     border-radius: 10px;
 
     outline: none;
+
+    transition: border-color 0.2s;
 }
 
 #loginForm input:focus {
@@ -66,6 +70,8 @@ body {
 }
 
 #loginForm button {
+    width: 100%;
+
     padding: 14px;
 
     font-size: 16px;
@@ -79,7 +85,7 @@ body {
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition: background-color 0.2s;
 }
 
 #loginForm button:hover {
@@ -88,10 +94,13 @@ body {
 
 #result {
     text-align: center;
+
+    font-size: 14px;
 }
 
 .register-text {
     color: #888;
+
     text-align: center;
 
     font-size: 14px;
@@ -99,9 +108,66 @@ body {
 
 .register-text a {
     color: white;
+
     text-decoration: none;
 }
 
 .register-text a:hover {
     text-decoration: underline;
+}
+
+
+/* Планшеты */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    #loginForm {
+        padding: 30px 25px;
+    }
+
+    #loginForm h1 {
+        font-size: 28px;
+    }
+}
+
+
+/* Телефоны */
+
+@media (max-width: 400px) {
+
+    body {
+        padding: 10px;
+    }
+
+    #loginForm {
+        padding: 25px 18px;
+
+        gap: 15px;
+
+        border-radius: 16px;
+    }
+
+    #loginForm h1 {
+        font-size: 24px;
+    }
+
+    #loginForm input {
+        padding: 12px 14px;
+
+        font-size: 15px;
+    }
+
+    #loginForm button {
+        padding: 12px;
+
+        font-size: 15px;
+    }
+
+    .register-text {
+        font-size: 13px;
+    }
 }

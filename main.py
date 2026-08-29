@@ -97,8 +97,19 @@ def register(user: UserRegister, response: Response):
     }
 
 @app.post("/api/notes")
-def write_note(note: Note):
-    notes.append(note)
+def write_note(note: Note, request: Request):
+    user_id = request.cookies.get("user_id")
+
+    if not user_id:
+        return {
+            "message": "You are not logged in"
+        }
+
+    notes.append({
+        "user_id": int(user_id),
+        "title": note.title,
+        "text": note.text
+    })
 
     return {
         "message": "Note created",
@@ -109,9 +120,42 @@ def write_note(note: Note):
     }
 
 @app.get("/api/notes")
-def get_notes():
-    return { "notes": notes }
+def get_notes(request: Request):
+
+    user_id = request.cookies.get("user_id")
+
+    if not user_id:
+        return {
+            "message": "You are not logged in"
+        }
+
+    user_notes = []
+
+    for note in notes:
+        if note["user_id"] == int(user_id):
+            user_notes.append(note)
+
+    return {
+        "notes": user_notes
+    }
 
 @app.get("/api/notes/{index}")
-def get_notes(index: int):
-    return { "note": notes[index] }
+def get_note(index: int, request: Request):
+
+    user_id = request.cookies.get("user_id")
+
+    if not user_id:
+        return {
+            "message": "You are not logged in"
+        }
+
+    note = notes[index]
+
+    if note["user_id"] != int(user_id):
+        return {
+            "message": "Access denied"
+        }
+
+    return {
+        "note": note
+    }

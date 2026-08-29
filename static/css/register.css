@@ -15,16 +15,18 @@ body {
     align-items: center;
 
     font-family: Arial, sans-serif;
+
+    padding: 20px;
 }
 
 .container {
     width: 100%;
     max-width: 450px;
-
-    padding: 20px;
 }
 
 #registerForm {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
 
@@ -59,6 +61,8 @@ body {
     border-radius: 10px;
 
     outline: none;
+
+    transition: border-color 0.2s;
 }
 
 #registerForm input:focus {
@@ -66,6 +70,8 @@ body {
 }
 
 #registerForm button {
+    width: 100%;
+
     padding: 14px;
 
     font-size: 16px;
@@ -79,7 +85,7 @@ body {
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition: background-color 0.2s;
 }
 
 #registerForm button:hover {
@@ -88,10 +94,12 @@ body {
 
 #result {
     text-align: center;
+    font-size: 14px;
 }
 
 .login-text {
     color: #888;
+
     text-align: center;
 
     font-size: 14px;
@@ -99,9 +107,64 @@ body {
 
 .login-text a {
     color: white;
+
     text-decoration: none;
 }
 
 .login-text a:hover {
     text-decoration: underline;
+}
+
+
+/* Планшеты */
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+    }
+
+    #registerForm {
+        padding: 30px 25px;
+    }
+
+    #registerForm h1 {
+        font-size: 28px;
+    }
+}
+
+
+/* Телефоны */
+@media (max-width: 400px) {
+
+    body {
+        padding: 10px;
+    }
+
+    #registerForm {
+        padding: 25px 18px;
+
+        gap: 15px;
+
+        border-radius: 16px;
+    }
+
+    #registerForm h1 {
+        font-size: 24px;
+    }
+
+    #registerForm input {
+        padding: 12px 14px;
+
+        font-size: 15px;
+    }
+
+    #registerForm button {
+        padding: 12px;
+
+        font-size: 15px;
+    }
+
+    .login-text {
+        font-size: 13px;
+    }
 }
