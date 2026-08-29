@@ -40,7 +40,7 @@ NoteSpace is a project for learning and implementing real-world backend concepts
 ```text
 NoteSpace/
 ├── main.py
-├── main.html
+├── index.html
 │
 ├── static/
 │   ├── css/
