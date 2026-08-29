@@ -33,7 +33,7 @@ form.addEventListener("submit", async (event) => {
         form.reset();
 
     } catch (error) {
-        document.getElementById("result").textContent = "Something went wrong";
+        result.textContent = "Something went wrong";
     }
 
     finally {

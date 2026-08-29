@@ -1,22 +1,15 @@
-const form = document.getElementById("registerForm");
+const form = document.getElementById("loginForm");
 
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const username = document.getElementById("username").value;
-    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
 
     const result = document.getElementById("result");
 
-    if (password !== confirmPassword) {
-        result.textContent = "Passwords do not match";
-        return;
-    }
-
     try {
-        const response = await fetch("/api/register", {
+        const response = await fetch("/api/login", {
             method: "POST",
 
             headers: {
@@ -25,7 +18,6 @@ form.addEventListener("submit", async (event) => {
 
             body: JSON.stringify({
                 username: username,
-                email: email,
                 password: password
             })
         });
@@ -35,6 +27,12 @@ form.addEventListener("submit", async (event) => {
         result.textContent = data.message;
 
         form.reset();
+
+        if (response.ok && data.redirect) {
+            setTimeout(() => {
+                window.location.href = data.redirect;
+            }, 1000);
+        }
 
     } catch (error) {
         result.textContent = "Something went wrong";
