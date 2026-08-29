@@ -24,7 +24,7 @@ notes = []
 
 @app.get("/")
 def home():
-    return FileResponse("index.html")
+    return FileResponse("main.html")
 
 @app.post("/api/notes")
 def write_note(note: Note):
