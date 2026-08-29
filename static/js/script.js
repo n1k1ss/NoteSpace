@@ -31,6 +31,6 @@ form.addEventListener("submit", async (event) => {
 
     setTimeout(() => {
         result.textContent = ""
-    }, 1000)
+    }, 3000)
 
 });
