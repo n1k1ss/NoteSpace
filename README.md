@@ -1,8 +1,8 @@
-# Nuvio 📝
+# NoteSpace 📝
 
 A modern and responsive note-taking web application built with **FastAPI and JavaScript**.
 
-Nuvio is a project for learning and implementing real-world backend concepts such as REST APIs, data validation, authentication, and database integration.
+NoteSpace is a project for learning and implementing real-world backend concepts such as REST APIs, data validation, authentication, and database integration.
 
 ## ✨ Features
 
@@ -38,7 +38,7 @@ Nuvio is a project for learning and implementing real-world backend concepts suc
 ## 📁 Project Structure
 
 ```text
-Nuvio/
+NoteSpace/
 ├── main.py
 ├── index.html
 │
@@ -58,8 +58,8 @@ Nuvio/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/n1k1ss/nuvio.git
-cd nuvio
+git clone https://github.com/n1k1ss/NoteSpace.git
+cd NoteSpace
 ```
 
 ### 2. Create a virtual environment
@@ -173,7 +173,7 @@ Each user will eventually be able to access only their own notes.
 
 ## 📚 Purpose
 
-Nuvio is primarily a learning project focused on understanding how a modern web application works from frontend to backend.
+NoteSpace is primarily a learning project focused on understanding how a modern web application works from frontend to backend.
 
 The project demonstrates the connection between:
 

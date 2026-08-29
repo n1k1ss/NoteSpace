@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 app = FastAPI(
-    title="Nuvio"
+    title="NoteSpace"
 )
 
 app.mount(
