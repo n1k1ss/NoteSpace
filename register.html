@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register to NoteSpace</title>
+
+    <link rel="stylesheet" href="/static/css/register.css">
+
+    <title>NoteSpace — Register</title>
 </head>
+
 <body>
-    
+
+    <div class="container">
+
+        <form id="registerForm">
+
+            <h1>Create account</h1>
+
+            <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username"
+                required
+            >
+
+            <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                required
+            >
+
+            <input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                placeholder="Confirm password"
+                required
+            >
+
+            <button type="submit">
+                Create account
+            </button>
+
+            <p id="result"></p>
+
+            <p class="login-text">
+                Already have an account?
+                <a href="/login">Log in</a>
+            </p>
+
+        </form>
+
+    </div>
+
+    <script src="/static/js/register.js"></script>
+
 </body>
+
 </html>
