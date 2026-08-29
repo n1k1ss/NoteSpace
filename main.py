@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request, Response
 from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+from pwdlib import PasswordHash
 
 app = FastAPI(
     title="NoteSpace"
@@ -14,6 +15,8 @@ app.mount(
     ),
     name="static"
 )
+
+password_hash = PasswordHash.recommended()
 
 class Note(BaseModel):
     title: str
@@ -52,7 +55,7 @@ def login(user: UserLogin, response: Response):
 
         if (
             registered_user["username"] == user.username
-            and registered_user["password"] == user.password
+            and password_hash.verify(user.password, registered_user["password"])
         ):
 
             response.set_cookie(
@@ -78,11 +81,13 @@ def register():
 def register(user: UserRegister, response: Response):
     user_id = len(users) + 1
 
+    hashed = password_hash.hash(user.password)
+
     users.append({
         "id": user_id,
         "username": user.username,
         "email": user.email,
-        "password": user.password
+        "password": hashed
     })
 
     response.set_cookie(
