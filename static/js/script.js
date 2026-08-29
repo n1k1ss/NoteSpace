@@ -8,26 +8,37 @@ form.addEventListener("submit", async (event) => {
     const title = document.getElementById("title").value;
     const text = document.getElementById("text").value;
 
-    const response = await fetch("/api/notes", {
+    try {
+        loader.classList.remove("hidden");
 
-        method: "POST",
+        const response = await fetch("/api/notes", {
 
-        headers: {
-            "Content-Type": "application/json"
-        },
+            method: "POST",
 
-        body: JSON.stringify({
-            title: title,
-            text: text
-        })
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-    });
+            body: JSON.stringify({
+                title: title,
+                text: text
+            })
 
-    const data = await response.json();
+        });
 
-    result.textContent = data.message;
+        const data = await response.json();
 
-    form.reset();
+        result.textContent = data.message;
+
+        form.reset();
+
+    } catch (error) {
+        document.getElementById("result").textContent = "Something went wrong";
+    }
+
+    finally {
+        loader.classList.add("hidden");
+    }
 
     setTimeout(() => {
         result.textContent = ""
