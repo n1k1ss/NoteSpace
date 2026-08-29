@@ -36,6 +36,12 @@ form.addEventListener("submit", async (event) => {
 
         form.reset();
 
+        if (response.ok && data.redirect) {
+            setTimeout(() => {
+                window.location.href = data.redirect;
+            }, 1000);
+        }
+
     } catch (error) {
         result.textContent = "Something went wrong";
     }
