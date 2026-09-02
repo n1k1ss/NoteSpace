@@ -1,15 +1,19 @@
 const form = document.getElementById("loginForm");
+const loader = document.getElementById("loader");
+const result = document.getElementById("result");
 
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
     const result = document.getElementById("result");
 
     try {
-        const response = await fetch("/api/login", {
+        loader.classList.remove("hidden");
+
+        const response = await fetch("/api/auth/login", {
             method: "POST",
 
             headers: {
@@ -17,7 +21,7 @@ form.addEventListener("submit", async (event) => {
             },
 
             body: JSON.stringify({
-                username: username,
+                email: email,
                 password: password
             })
         });
@@ -36,5 +40,9 @@ form.addEventListener("submit", async (event) => {
 
     } catch (error) {
         result.textContent = "Something went wrong";
+    }
+
+    finally {
+        loader.classList.add("hidden");
     }
 });

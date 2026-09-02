@@ -1,4 +1,5 @@
 const form = document.getElementById("noteForm");
+const loader = document.getElementById("loader");
 const result = document.getElementById("result");
 
 form.addEventListener("submit", async (event) => {
@@ -11,7 +12,7 @@ form.addEventListener("submit", async (event) => {
     try {
         loader.classList.remove("hidden");
 
-        const response = await fetch("/api/notes", {
+        const response = await fetch("/api/notes/create", {
 
             method: "POST",
 

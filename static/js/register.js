@@ -1,4 +1,6 @@
 const form = document.getElementById("registerForm");
+const loader = document.getElementById("loader");
+const result = document.getElementById("result");
 
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -16,7 +18,9 @@ form.addEventListener("submit", async (event) => {
     }
 
     try {
-        const response = await fetch("/api/register", {
+        loader.classList.remove("hidden");
+
+        const response = await fetch("/api/auth/register", {
             method: "POST",
 
             headers: {
@@ -44,5 +48,9 @@ form.addEventListener("submit", async (event) => {
 
     } catch (error) {
         result.textContent = "Something went wrong";
+    }
+
+    finally {
+        loader.classList.add("hidden");
     }
 });
