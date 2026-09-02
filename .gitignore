@@ -15,6 +15,6 @@ __pycache__/
 # IDE
 .vscode/
 
-# alembiv
+# alembic
 alembic/
 alembic.*
