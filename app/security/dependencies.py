@@ -7,7 +7,6 @@ from app.db.dependencies import get_db
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import selectinload
 
 from datetime import datetime, timezone
 
@@ -46,8 +45,7 @@ async def get_current_user(
     )
 
     result = await db.execute(
-        select(User)
-        .options(selectinload(User.notes)).where(
+        select(User).where(
             User.id == session.user_id
         )
     )
@@ -91,7 +89,6 @@ async def get_optional_user(
 
     result = await db.execute(
         select(User)
-        .options(selectinload(User.notes))
         .where(User.id == session.user_id)
     )
 
