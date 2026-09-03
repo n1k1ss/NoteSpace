@@ -42,5 +42,14 @@ async def create_note(
 @router.get("/check")
 async def get_notes(
     user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
 ):
-    return { "notes": user.notes }
+    result = await db.execute(
+        select(Note).where(
+            Note.user_id == user.id
+        )
+    )
+
+    notes = result.scalars().all()
+
+    return { "notes": notes }
