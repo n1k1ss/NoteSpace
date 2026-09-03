@@ -40,7 +40,7 @@ async def create_note(
 
 
 @router.get("/check")
-async def check_notes(
+async def get_notes(
     user: User = Depends(get_current_user),
 ):
     return { "notes": user.notes }
