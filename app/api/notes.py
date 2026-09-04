@@ -70,5 +70,10 @@ async def get_note_with_id(
 
     note = result.scalar_one_or_none()
 
-    if note.user_id == user.id: return { "note": note }
-    raise HTTPException(status_code=403, detail="No access")
+    if note is None:
+        raise HTTPException(status_code=404, detail="Note not found")
+
+    if note.user_id != user.id:
+        raise HTTPException(status_code=403, detail="No access")
+
+    return {"note": note}
