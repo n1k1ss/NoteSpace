@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from app.schemas.notes import CreateNoteRequest
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -53,3 +53,22 @@ async def get_notes(
     notes = result.scalars().all()
 
     return { "notes": notes }
+
+
+
+@router.get("/check/{id}")
+async def get_note_with_id(
+    id: int,
+    user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(
+            select(Note).where(
+                Note.id == id,
+            )
+        )
+
+    note = result.scalar_one_or_none()
+
+    if note.user_id == user.id: return { "note": note }
+    raise HTTPException(status_code=403, detail="No access")
