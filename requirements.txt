@@ -7,7 +7,7 @@ psycopg[binary]
 
 alembic
 
-pydantic
+pydantic[email]
 pydantic-settings
 
 pwdlib[argon2]
